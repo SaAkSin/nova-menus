@@ -1,13 +1,13 @@
 {
     "name": "saaksin/nova-menus",
-    "description": "A Laravel Nova tool.",
+    "description": "Laravel Nova 사이드메뉴 - 그룹 collapse 지원",
     "keywords": [
         "laravel",
         "nova"
     ],
     "license": "MIT",
     "require": {
-        "php": ">=7.1.0"
+        "php": "^7.2.5"
     },
     "autoload": {
         "psr-4": {

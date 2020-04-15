@@ -8,14 +8,14 @@
     </h3>
 
     @foreach($navigation as $group => $resources)
-        <?php
-        $my_resources = [];
-        foreach ($resources as $r) {
-            $my_resources[] = $r::uriKey();
-        }
-        ?>
+        @php
+            $uris = [];
+            foreach ($resources as $res) {
+                $uris[] = $res::uriKey();
+            }
+        @endphp
         <nova-menus header="{{ $group }}" :last="@json($loop->last)"
-                                      :expanded="@if(in_array(explode("/",url()->current())[count(explode("/",url()->current()))-1],$my_resources)) true @else false @endif">
+                                      :expanded="@if(in_array(explode("/",url()->current())[count(explode("/",url()->current()))-1],$uris)) true @else false @endif">
             @foreach ($resources as $key => $resource)
                 <li class="leading-wide mb-4 text-sm" key="{{ $key }}">
                     <router-link :to="{
@@ -23,7 +23,7 @@
                             params: {
                                 resourceName: '{{ $resource::uriKey() }}'
                             }
-                        }" class="text-white ml-6 no-underline dim block">
+                        }" class="text-white antialiased ml-6 no-underline dim block">
                         {{ $resource::label() }}
                     </router-link>
                 </li>
